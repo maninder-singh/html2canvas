@@ -967,7 +967,7 @@ if (typeof(define) === 'function' && define.amd) {
 }
 
 function renderDocument(document, options, windowWidth, windowHeight, html2canvasIndex) {
-    return createWindowClone(document, document, windowWidth, windowHeight, options, document.defaultView.pageXOffset, document.defaultView.pageYOffset).then(function(container) {
+    return createWindowClone(document, document, windowWidth, windowHeight + document.defaultView.pageYOffset, options,0,0).then(function(container) {
         log("Document cloned");
         var attributeName = html2canvasNodeAttribute + html2canvasIndex;
         var selector = "[" + attributeName + "='" + html2canvasIndex + "']";
