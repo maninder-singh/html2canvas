@@ -969,6 +969,9 @@ if (typeof(define) === 'function' && define.amd) {
 function renderDocument(document, options, windowWidth, windowHeight, html2canvasIndex) {
     return createWindowClone(document, document, windowWidth, windowHeight, options,document.defaultView.pageXOffset, document.defaultView.pageYOffset).then(function(container) {
         log("Document cloned");
+        if(options.onDOMClone !== undefined || options.onDOMClone != null){
+            options.onDOMClone(options);
+        }
         var attributeName = html2canvasNodeAttribute + html2canvasIndex;
         var selector = "[" + attributeName + "='" + html2canvasIndex + "']";
         document.querySelector(selector).removeAttribute(attributeName);
